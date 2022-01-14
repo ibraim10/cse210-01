@@ -7,7 +7,11 @@ def main():
         player = next_player(player)
     show_board(board)
     print("Thanks for playing!") 
-
+print(f'\n-------------------------------------')
+print(f'-------------------------------------')
+print('Welcome to the Tic-tac-toe game!')
+print(f'-------------------------------------')
+print(f'-------------------------------------\n')
 def create_board():
     board = []
     for square in range(9):
