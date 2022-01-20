@@ -25,7 +25,7 @@ class Director:
         self.total_score = 0
 
         for i in range(5):
-            die = Die()
+            die = Die()            
             self.dice.append(die)
 
     def start_game(self):
@@ -39,6 +39,8 @@ class Director:
             self.do_updates()
             self.score = 0
             self.do_outputs()
+            
+            
 
     def get_inputs(self):
         """Ask the user if they want to roll.
@@ -46,8 +48,10 @@ class Director:
         Args:
             self (Director): An instance of Director.
         """
+        print('------------------------------')
         roll_dice = input("Roll dice? [y/n] ")
-        self.is_playing = (roll_dice == "y")
+        self.is_playing = (roll_dice == "y" or roll_dice == "yes")
+        
         
     def do_updates(self):
         """Updates the player's score.
@@ -63,6 +67,11 @@ class Director:
             die.roll()
             self.score += die.points 
         self.total_score += self.score
+        
+        if self.score == 0:
+            self.is_playing = False
+            print(f"\nGame over, in this roll you don't have points")
+            print(f'Your total points are {self.total_score}\n')        
 
     def do_outputs(self):
         """Displays the dice and the score. Also asks the player if they want to roll again. 
@@ -80,4 +89,5 @@ class Director:
 
         print(f"You rolled: {values}")
         print(f"Your score is: {self.total_score}\n")
+        
         self.is_playing == (self.score > 0)

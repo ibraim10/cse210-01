@@ -36,5 +36,3 @@ class Die:
             self.points = 50
         else:
             self.points = 0
-            
-        
